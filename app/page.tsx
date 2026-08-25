@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { Bell, BellRing, CheckCircle2, Clock3, ExternalLink, Globe2, Pause, Play, RefreshCw, ServerCrash, Trash2 } from 'lucide-react';
+import { Bell, BellRing, CheckCircle2, Clock3, ExternalLink, Globe2, Maximize2, Pause, Play, RefreshCw, ServerCrash, Trash2 } from 'lucide-react';
 
 const TARGET='https://atendimento.grupoimagetech.com.br/';
 type Entry={time:string;online:boolean;duration:number};
@@ -18,7 +18,7 @@ export default function Page(){
  const enableNotifications=async()=>{if(!('Notification'in window))return;const p=await Notification.requestPermission();setNotifications(p==='granted')};
  const online=status==='online';
  return <main><section className="shell">
-  <header><div className="brand"><span className="brandIcon"><Globe2/></span><div><small>MONITOR DE DISPONIBILIDADE</small><h1>Grupo Imagem Tech</h1></div></div><a className="visit" href={TARGET} target="_blank">Abrir site <ExternalLink size={16}/></a></header>
+  <header><div className="brand"><span className="brandIcon"><Globe2/></span><div><small>MONITOR DE DISPONIBILIDADE</small><h1>Grupo Imagem Tech</h1></div></div><nav className="headerActions"><a className="visit" href="/compacto">Modo compacto <Maximize2 size={16}/></a><a className="visit" href={TARGET} target="_blank">Abrir site <ExternalLink size={16}/></a></nav></header>
   <article className={'status '+status}>
    <div className="pulse">{status==='checking'?<RefreshCw className="spin"/>:online?<CheckCircle2/>:<ServerCrash/>}</div>
    <div className="statusText"><span>STATUS ATUAL</span><h2>{status==='checking'?'Verificando…':online?'Está online':'Ainda está fora do ar'}</h2><p>{online?'O servidor respondeu. Você já pode tentar acessar o atendimento.':'Continuaremos verificando automaticamente enquanto esta página permanecer aberta.'}</p></div>
