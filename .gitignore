@@ -3,3 +3,5 @@ node_modules/
 .vinext/
 .open-next/
 dist/
+.sites-runtime/
+.wrangler/
