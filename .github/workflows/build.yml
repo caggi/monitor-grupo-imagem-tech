@@ -29,5 +29,8 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Permitir execução dos scripts
+        run: chmod +x scripts/*.sh
+
       - name: Validar build
         run: npm run build
